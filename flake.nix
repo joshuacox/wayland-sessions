@@ -1,5 +1,5 @@
 {
-  description = "A flake for building wayland_sessions";
+  description = "A flake for building wayland-sessions";
 
   inputs.nixpkgs.url = github:NixOS/nixpkgs/nixos-24.05;
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -19,8 +19,8 @@
     suffix-version = version: attrs: nixpkgs.lib.mapAttrs' (name: value: nixpkgs.lib.nameValuePair (name + version) value) attrs;
     suffix-stable = suffix-version "-24_05";
   in {
-    packages.x86_64-linux.default = self.packages.x86_64-linux.wayland_sessions;
-    packages.x86_64-linux.wayland_sessions =
+    packages.x86_64-linux.default = self.packages.x86_64-linux.wayland-sessions;
+    packages.x86_64-linux.wayland-sessions =
       # Notice the reference to nixpkgs here.
       with import nixpkgs { system = "x86_64-linux"; };
 			writeTextFile {
